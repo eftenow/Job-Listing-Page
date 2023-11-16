@@ -51,7 +51,11 @@
 
     @include for-mobile {
         width: 85%;
+        margin-top: 11%;
+    }
 
+    @include for-mobile-mini {
+        margin-top: 12.5%;
     }
 
 
@@ -79,6 +83,10 @@
             flex-direction: column;
             align-items: flex-start;
             padding: 0.55rem
+        }
+
+        @include for-mobile-mini {
+            padding: 0
         }
     }
 
@@ -123,6 +131,10 @@
             align-items: flex-start;
         }
 
+        @include for-mobile-mini{
+            padding: 0.2rem;
+        }
+
     }
 
     .right-card-side {
@@ -142,6 +154,10 @@
                 background-color: $dark-gray-cyan;
                 margin: 0.25rem 1rem 1rem 0.5rem;
             }
+        }
+
+        @include for-mobile {
+            padding: 0.25rem 0;
         }
     }
 

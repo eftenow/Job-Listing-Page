@@ -15,3 +15,9 @@
         @content;
     }
 }
+
+@mixin for-mobile-mini {
+    @media (max-width: $mobile-mini) {
+        @content;
+    }
+}
