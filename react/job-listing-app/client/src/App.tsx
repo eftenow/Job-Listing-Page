@@ -1,13 +1,11 @@
-import { useState } from 'react'
 import '../public/css/main.scss'
 import { Route, Routes } from 'react-router-dom'
 import { Navigation } from './Components/Common/Navigation'
 import { Listings } from './Components/Listing/Listings'
+import { listingStore } from './Components/Listing/ListingStore'
 
 
 function App() {
-  const [listings, setListings] = useState([]);
-
 
   return (
     <>
@@ -15,15 +13,11 @@ function App() {
 
       <main>
         <Routes>
-          <Route path='/' element={<Listings />} />
+        <Route path='/' element={<Listings listingStore={listingStore} />} />
         </Routes>
       </main>
 
-
     </>
-
-
-
   )
 }
 

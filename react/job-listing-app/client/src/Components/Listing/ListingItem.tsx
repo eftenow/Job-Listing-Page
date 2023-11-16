@@ -1,20 +1,34 @@
-export const ListingItem = ({ listing }) => {
+import { ListingItemProps } from "./ListingStore";
+
+
+
+export const ListingItem: React.FC<ListingItemProps> = ({ listing, selectCategory }) => {
+    const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        const elementType = (e.target as HTMLParagraphElement).tagName.toLowerCase();
+
+        if (elementType !== 'button'){
+            return;
+        }
+        
+        const selectedCategory = (e.target as HTMLDivElement).textContent;
+        selectCategory(selectedCategory as string)
+    }
 
     return (
         <li className='listing-card'>
             <div className='left-card-side'>
-                <div className='img-container'><img src="../public/images/photosnap.svg" alt="photoshop" /></div>
+                <div className='img-container'><img src={listing.logo} alt={`${listing.company}'s logo`} /></div>
                 <div className='listing-data'>
-                    <p className='first-row'>Photosnap <span className='features new'>NEW!</span> <span className='features featured'>FEATURED</span></p>
-                    <p className='second-row'><a href="#">Senior Frontend Developer</a></p>
-                    <p className='third-row'><span className='listing-specific'>1d ago</span> &bull; <span className='listing-specific'>Full time</span> &bull; <span className='listing-specific'>USA Only</span> </p>
+                    <p className='first-row'>{listing.company} {listing.new && <span className='features new'>NEW!</span>} {listing.featured && <span className='features featured'>FEATURED</span>}</p>
+                    <p className='second-row'><a href="#">{listing.position}</a></p>
+                    <p className='third-row'><span className='listing-specific'>{listing.postedAt}</span> &bull; <span className='listing-specific'>{listing.contract}</span> &bull; <span className='listing-specific'>{listing.location}</span> </p>
                 </div>
             </div>
-            <div className='right-card-side'>
-                <button className='button'>Frontend</button>
-                <button className='button'>Senior</button>
-                <button className='button'>HTML</button>
-                <button className='button'>CSS</button>
+            <div className='right-card-side' onClick={(e) => onClick(e)}>
+                <button className='button'>{listing.role}</button>
+                <button className='button'>{listing.level}</button>
+                {listing.languages.map(language => <button key={language} className='button'>{language}</button>)}
+                {listing.tools.map(tool => <button key={tool} className='button'>{tool}</button>)}
             </div>
         </li>
     )
