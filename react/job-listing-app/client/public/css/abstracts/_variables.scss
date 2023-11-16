@@ -1,0 +1,38 @@
+$font-stack: 'League Spartan', sans-serif;
+
+
+//Sizes
+$full-width: 1440px; 
+$desktop: 1200px;
+$tablet: 768px; 
+$mobile: 411px;
+
+
+//Colors
+
+$dark-cyan: hsl(180, 29%, 50%); //primary clr
+
+$light-gray-cyan: hsl(180, 52%, 96%); //background clr
+$light-gray-cyan-filter: hsl(180, 31%, 95%); // Filter Tablets
+
+$mid-gray-cyan: hsl(180, 38%, 91%);
+
+$dark-gray-cyan: hsl(180, 8%, 52%); // dark cyan
+$very-dark-gray-cyan: hsl(180, 14%, 20%); // very dark cyan
+$white: #fff;
+
+//Font weight
+$fw-regular: 500;
+$fw-bold: 700;
+
+
+//Font size
+$fs-very-small: 13px;
+$fs-small: 14px;
+$fs-body: 15px;
+$fs-copy: 16px;
+$fs-medium: 18px;
+$fs-large: 20px;
+$fs-very-large: 26px;
+$fs-xlarge: 30px;
+$fs-xxlarge: 42px;

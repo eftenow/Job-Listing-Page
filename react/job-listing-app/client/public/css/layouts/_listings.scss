@@ -1,0 +1,210 @@
+.filtration-section {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    width: 80%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-top: -26px;
+    box-shadow: 1px 1px 7px 0px $dark-cyan;
+
+    @include for-mobile-tablet {
+        width: 95%;
+        padding: 0.4rem;
+    }
+
+    @include for-mobile {
+        width: 85%;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .filtration-element {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        font-weight: $fw-bold;
+        color: $dark-cyan;
+        background-color: $light-gray-cyan;
+
+        padding-left: 0.7rem;
+        margin: 0.3rem;
+        border-radius: 0.2rem;
+
+        @include for-mobile-tablet {
+            padding-left: 0.4rem;
+        }
+    }
+}
+
+.listing-section {
+    width: 80%;
+    margin-top: 7%;
+
+    @include for-mobile-tablet {
+        width: 95%;
+    }
+
+    @include for-mobile {
+        width: 85%;
+
+    }
+
+
+    ul {
+        display: flex;
+
+    }
+
+    .listing-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-radius: 0.5rem;
+        background-color: $white;
+        box-shadow: 1px 1px 7px 0px $dark-cyan;
+        padding: 0.75rem;
+
+        @include for-tablet {
+            padding: 0.25rem;
+        }
+
+        @include for-mobile {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0.55rem
+        }
+    }
+
+    .listing-card:hover {
+        border-left: $dark-cyan 6px solid;
+
+        @include for-tablet {
+            border-left: $dark-cyan 2px solid;
+        }
+    }
+
+    .img-container {
+        max-width: 80px;
+        max-height: 80px;
+
+        @include for-mobile-tablet {
+            max-width: 58px;
+            max-height: 62px;
+        }
+
+        @include for-mobile {
+            max-width: 38px;
+            max-height: 38px;
+            margin-top: -32px;
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .left-card-side {
+        display: flex;
+        align-items: center;
+        padding: 0.4rem;
+        flex-grow: 1;
+        flex-shrink: 0;
+
+        @include for-mobile {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+    }
+
+    .right-card-side {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 0.3rem;
+
+
+        @include for-mobile {
+            width: 100%;
+            padding: 0.5rem 0;
+
+            &:before {
+                content: '';
+                width: 100%;
+                height: 1px;
+                background-color: $dark-gray-cyan;
+                margin: 0.25rem 1rem 1rem 0.5rem;
+            }
+        }
+    }
+
+    .listing-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 64px;
+        margin-left: 0.6rem;
+
+        @include for-mobile-tablet {
+            height: 58px;
+            margin-left: 0.3rem;
+        }
+
+        @include for-mobile {
+            height: 72px;
+
+            p {
+                margin: 0.35rem;
+            }
+
+            .third-row {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .features {
+        background-color: $dark-cyan;
+        font-weight: $fw-regular;
+        padding: 4px 6px 2px 6px;
+        border-radius: 8px;
+        color: $white;
+        font-size: 11px;
+        margin-left: 0.3rem;
+    }
+
+    .featured {
+        background-color: $very-dark-gray-cyan;
+    }
+
+    .listing-specific {
+        margin: 0 0.3rem;
+    }
+
+    .first-row {
+        font-size: $fs-very-small;
+        color: $dark-cyan;
+        font-weight: $fw-bold;
+    }
+
+    .second-row {
+        color: $very-dark-gray-cyan;
+        font-weight: $fw-bold;
+    }
+
+    .second-row:hover {
+        color: $dark-cyan;
+    }
+
+    .third-row {
+        font-size: 12px;
+        color: $dark-gray-cyan;
+    }
+}

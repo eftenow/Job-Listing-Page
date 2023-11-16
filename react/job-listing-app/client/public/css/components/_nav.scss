@@ -1,0 +1,10 @@
+.site-nav {
+    background: url('./images/bg-header-desktop.svg'), $dark-cyan;
+    height: 18vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+  }

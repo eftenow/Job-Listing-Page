@@ -1,0 +1,11 @@
+#root, body, textarea {
+	font-family: $font-stack;
+	font-size: 100%;
+	font-size: 16px;
+}
+
+em,
+.bold {
+	font-style: normal;
+	font-weight: bold;
+}
