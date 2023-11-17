@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "name": "Apple",
+        "email": "apple@icloud.com",
+        "logo": "https://images.crowdspring.com/blog/wp-content/uploads/2022/08/17030919/apple-logo-5.jpeg",
+        "password": "12345"
+    },
+
+    {
+        "id": 2,
+        "name": "Microsoft",
+        "email": "microsoft@outlook.com",
+        "logo": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RWCZER?ver=1433&q=90&m=6&h=195&w=348&b=%23FFFFFFFF&l=f&o=t&aim=true",
+        "password": "12345"
+    },
+
+    {
+        "id": 3,
+        "name": "Google",
+        "email": "google@gmail.com",
+        "logo": "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png",
+        "password": "12345"
+    }
+]

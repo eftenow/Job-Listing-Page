@@ -28,6 +28,17 @@
     margin: 1.5rem auto;
     padding: 2.2rem 3.3rem;
 
+    .errors{
+        margin: 0.25rem 0;
+        list-style: disc;
+        .error-msg{
+            color: $error-red;
+            font-size: $fs-very-small;
+            font-weight: bold;
+            margin: 0.15rem 1rem;
+        }
+    }
+
     @include for-mobile-tablet {
         min-width: 95vw;
         height: auto;
@@ -43,6 +54,8 @@
             padding: 1rem 2.2rem 0.5rem 2.2rem;
         }
     }
+
+
 }
 
 .form-input-field {
