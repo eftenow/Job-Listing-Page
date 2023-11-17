@@ -1,0 +1,106 @@
+.login-title,
+.register-title {
+    color: $dark-cyan;
+    font-weight: $fw-bold;
+    font-size: $fs-very-large;
+    margin-top: 0;
+    margin-bottom: 5%;
+    padding-top: 0;
+    text-align: center;
+
+    &.register-title {
+        margin-bottom: 2.5%;
+    }
+}
+
+
+.register-section,
+.login-section {
+    padding: 3%;
+}
+
+.login-form,
+.register-form {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px $dark-cyan;
+    max-width: $max-width-form-desktop;
+    min-width: $min-width-form-desktop;
+    margin: 1.5rem auto;
+    padding: 2.2rem 3.3rem;
+
+    @include for-mobile-tablet {
+        min-width: 95vw;
+        height: auto;
+        margin-top: 3rem;
+        padding: 2.5rem;
+    }
+}
+
+.form-input-field {
+    position: relative;
+}
+
+.login-label,
+.register-label {
+    display: block;
+    font-size: $fs-copy;
+    font-weight: $fw-bold;
+    margin-bottom: 0.25rem;
+    color: $dark-cyan;
+}
+
+.login-input,
+.register-input {
+    border: 2px solid #ddd;
+    border-radius: 0.3rem;
+    font-size: $fs-small;
+    padding: 0.5rem;
+    width: 100%;
+    color: $dark-cyan;
+    margin-bottom: 1rem;
+
+    &:focus,
+    &:hover {
+        border: 2px solid $dark-cyan;
+        outline: none;
+    }
+}
+
+.login-button,
+.register-button {
+    background-color: $dark-cyan;
+    font-weight: $fw-bold;
+    border: none;
+    border-radius: 0.25rem;
+    color: $white;
+    cursor: pointer;
+    font-size: $fs-copy;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+
+    &:hover {
+        background-color: $dark-gray-cyan;
+    }
+}
+
+.login-register-text,
+.register-register-text {
+    font-size: $fs-small;
+    margin-top: 2rem;
+    text-align: center;
+    color: $dark-gray-cyan;
+}
+
+.login-register-link,
+.register-login-link {
+    color: $dark-cyan;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+        color: $dark-gray-cyan;
+    }
+}
