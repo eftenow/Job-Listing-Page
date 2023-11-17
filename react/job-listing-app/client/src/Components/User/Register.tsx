@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { UserItem } from "./UserStore";
-import { registerValidations } from "./utils/registerValidations";
+import { RegisterProps, UserItem } from "./stores/UserStore";
+import { registerValidations } from "./validations/registerValidations";
+import { useNavigate } from "react-router-dom";
 
-export const Register = () => {
+export const Register: React.FC<RegisterProps> = ({ userStore }) => {
     const [registerData, setRegisterData] = useState<Partial<UserItem>>({
         name: "",
         email: "",
@@ -11,6 +12,7 @@ export const Register = () => {
         rePassword: ""
     });
     const [registerErrors, setRegisterErrors] = useState<string[]>([]);
+    const navigate = useNavigate();
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRegisterErrors([]);
@@ -27,18 +29,13 @@ export const Register = () => {
         e.preventDefault();
         const errors = registerValidations(registerData);
 
-        if (errors) {
+        if (errors.length > 0) {
             setRegisterErrors(errors as string[]);
-            console.log('errors------------------------');
-            console.log(registerData);
-            
-            
             return;
         }
-
-        console.log(registerData);
-
-
+        
+        userStore.registerUser(registerData);
+        navigate('/');
     }
 
 
@@ -80,14 +77,14 @@ export const Register = () => {
                         </ul>
                     </div>)}
 
-                    <button type="submit" className="register-button"> Create account </button>
-            <p className="register-register-text">
-                Already have an account?<br />
-                <a href="/login" className="register-login-link">
-                    Login here
-                </a>
-            </p>
-        </form>
+                <button type="submit" className="register-button"> Create account </button>
+                <p className="register-register-text">
+                    Already have an account?<br />
+                    <a href="/login" className="register-login-link">
+                        Login here
+                    </a>
+                </p>
+            </form>
         </section >
     )
 }

@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react"
-import { ListingItem as ListinItemIf, ListingStore } from "./ListingStore"
 import { observer } from "mobx-react";
+
 import { ListingItem } from "./ListingItem";
 
+import { AuthStore } from "../User/stores/AuthStore";
+import { ListingItemIf, ListingStore } from "./ListingStore";
+
 interface ListingsProps {
-    listingStore: ListingStore
+    listingStore: ListingStore,
+    authStore: AuthStore
 }
 
 export const Listings: React.FC<ListingsProps> = observer(({ listingStore }) => {
     const [categoriesSelected, setSelectedCategories] = useState<string[]>([]);
-    const [listings, setListings] = useState<ListinItemIf[]>([]);
-
+    
+    const [listings, setListings] = useState<ListingItemIf[]>([]);
+    
 
     useEffect(() => {
         const fetchedListings = listingStore.listings;

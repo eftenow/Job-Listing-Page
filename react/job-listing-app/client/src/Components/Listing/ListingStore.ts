@@ -2,7 +2,7 @@ import { observable, action, makeObservable } from 'mobx';
 import data from '../../data/data.json';
 
 
-export interface ListingItem {
+export interface ListingItemIf {
     "id": number,
     "company": string,
     "logo": string,
@@ -16,17 +16,16 @@ export interface ListingItem {
     "location": string,
     "languages": string[],
     "tools": string[]
-
 }
 
 export interface ListingItemProps {
-    listing: ListingItem;
+    listing: ListingItemIf;
     selectCategory: (value:string) => void;
   }
 
 
 export class ListingStore {
-    listings: ListingItem[] = [];
+    listings: ListingItemIf[] = [];
 
     constructor() {
         makeObservable(this, {
@@ -37,12 +36,12 @@ export class ListingStore {
         this.listings = data;
     }
 
-    addListing(listingData: Partial<ListingItem>) {
+    addListing(listingData: Partial<ListingItemIf>) {
         const id = this.listings.length > 1 ? this.listings[this.listings.length - 1].id + 1 : 1;
-        const newListing: ListingItem = {
+        const newListing: ListingItemIf = {
             id,
             ...listingData
-        } as ListingItem;
+        } as ListingItemIf;
 
         this.listings.push(newListing);
     }
