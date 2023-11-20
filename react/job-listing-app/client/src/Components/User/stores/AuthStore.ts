@@ -10,8 +10,9 @@ export interface UserLocalStorage {
     id: number | null;
     name: string | '';
     logo: string | '';
-    listings?: number[],
-    applications?: number[]; 
+    isCompany: boolean;
+    listings?: number[];
+    applications?: number[];
 }
 
 
@@ -21,6 +22,7 @@ export class AuthStore {
         id: null,
         name: '',
         logo: '',
+        isCompany: false,
         listings: [],
         applications: []
     };
@@ -52,7 +54,10 @@ export class AuthStore {
         this.user = {
             id: null,
             name: '',
-            logo: ''
+            logo: '',
+            isCompany: false,
+            listings: [],
+            applications: []
         };
         this.updateLocalStorage();
     }

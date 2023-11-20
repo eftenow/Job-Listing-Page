@@ -18,7 +18,7 @@ function App() {
 
       <main>
         <Routes>
-        <Route path='/' element={<Listings listingStore={listingStore} authStore={authStore} />} />
+        <Route path='/' element={<Listings listingStore={listingStore} userData={authStore.isAuthenticated ? authStore.user : null} />} />
         <Route path='/login' element={<Login onLogin={authStore.login} />} />
         <Route path='/register' element={<Register userStore={userStore} />} />
         </Routes>

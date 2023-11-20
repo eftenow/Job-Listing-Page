@@ -3,31 +3,30 @@ import { observer } from "mobx-react";
 
 import { ListingItem } from "./ListingItem";
 
-import { AuthStore } from "../User/stores/AuthStore";
+import { UserLocalStorage } from "../User/stores/AuthStore";
 import { ListingItemIf, ListingStore } from "./ListingStore";
 
 interface ListingsProps {
     listingStore: ListingStore,
-    authStore: AuthStore
+    userData: UserLocalStorage | null
 }
 
-export const Listings: React.FC<ListingsProps> = observer(({ listingStore }) => {
+export const Listings: React.FC<ListingsProps> = observer(({ listingStore, userData }) => {
     const [categoriesSelected, setSelectedCategories] = useState<string[]>([]);
-    
     const [listings, setListings] = useState<ListingItemIf[]>([]);
-    
+
 
     useEffect(() => {
         const fetchedListings = listingStore.listings;
         if (categoriesSelected.length !== 0) {
             const filteredListings = fetchedListings.filter(listing =>
-              categoriesSelected.every(category =>
-                (listing.role && listing.role.includes(category)) ||
-                (listing.level && listing.level.includes(category)) ||
-                (listing.languages && listing.languages.includes(category)) ||
-                (listing.tools && listing.tools.includes(category))
+                categoriesSelected.every(category =>
+                    (listing.role && listing.role.includes(category)) ||
+                    (listing.level && listing.level.includes(category)) ||
+                    (listing.languages && listing.languages.includes(category)) ||
+                    (listing.tools && listing.tools.includes(category))
 
-              )
+                )
             );
 
             setListings(filteredListings);
@@ -65,7 +64,11 @@ export const Listings: React.FC<ListingsProps> = observer(({ listingStore }) => 
 
             <section className='listing-section'>
                 <ul>
-                    {listings.map(listing => <ListingItem key={listing.id} listing={listing} selectCategory={selectCategory} />)}
+                    {listings.map(listing =>
+                        <ListingItem key={listing.id}
+                            listing={listing}
+                            user={userData}
+                            selectCategory={selectCategory} />)}
                 </ul>
             </section></>
     )

@@ -2,14 +2,23 @@ import { ListingItemProps } from "./ListingStore";
 
 
 
-export const ListingItem: React.FC<ListingItemProps> = ({ listing, selectCategory }) => {
+export const ListingItem: React.FC<ListingItemProps> = ({ listing, selectCategory, user }) => {
+    let currentUser;
+    let alreadyApplied = false;
+    let isOwner = false;
+
+    if (user) {
+        currentUser = user;
+        alreadyApplied = user.applications ? listing.id in (user.applications) : false;
+        isOwner = user.listings ? listing.id in (user.listings) : false;
+    }
+
     const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
         const elementType = (e.target as HTMLParagraphElement).tagName.toLowerCase();
-
-        if (elementType !== 'button'){
+        if (elementType !== 'button') {
             return;
         }
-        
+
         const selectedCategory = (e.target as HTMLDivElement).textContent;
         selectCategory(selectedCategory as string)
     }
@@ -22,9 +31,12 @@ export const ListingItem: React.FC<ListingItemProps> = ({ listing, selectCategor
                     <p className='first-row'>{listing.company} {listing.new && <span className='features new'>NEW!</span>} {listing.featured && <span className='features featured'>FEATURED</span>}</p>
                     <p className='second-row'><a href="#">{listing.position}</a></p>
                     <p className='third-row'><span className='listing-specific'>{listing.postedAt}</span> &bull; <span className='listing-specific'>{listing.contract}</span> &bull; <span className='listing-specific'>{listing.location}</span> </p>
-                    <div className="fourth-row">
-                        <button><span className="btn-text">Apply</span> <span><i className="fa-solid fa-paper-plane icon"></i></span> </button>
-                        </div>
+                    {currentUser &&
+                        <div className="fourth-row">
+                            {alreadyApplied 
+                            ?<button><span className="btn-text">Apply</span> <span><i className="fa-solid fa-paper-plane icon"></i></span> </button>
+                            : <button id="applied"><span className="btn-text">Already applied</span> <span><i className="fa-solid fa-check"></i></span> </button>}
+                        </div>}
                 </div>
             </div>
             <div className='right-card-side' onClick={(e) => onClick(e)}>
