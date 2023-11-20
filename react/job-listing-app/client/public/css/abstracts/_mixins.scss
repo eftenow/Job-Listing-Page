@@ -5,13 +5,13 @@
 }
 
 @mixin for-mobile-tablet {
-    @media (max-width: 600px) {
+    @media (max-width: 610px) {
         @content;
     }
 }
 
 @mixin for-mobile {
-    @media (max-width: $mobile) {
+    @media (max-width: 500px) {
         @content;
     }
 }

@@ -8,6 +8,7 @@ export const Register: React.FC<RegisterProps> = ({ userStore }) => {
         name: "",
         email: "",
         logo: "",
+        isCompany: false,
         password: "",
         rePassword: ""
     });
@@ -18,10 +19,17 @@ export const Register: React.FC<RegisterProps> = ({ userStore }) => {
         setRegisterErrors([]);
 
         setRegisterData((state) => {
-            return {
-                ...state,
-                [e.target.name]: e.target.value
-            };
+            if (e.target.type === "radio") {
+                return {
+                    ...state,
+                    isCompany: e.target.value === "company",
+                };
+            } else {
+                return {
+                    ...state,
+                    [e.target.name]: e.target.value,
+                };
+            }
         });
     };
 
@@ -33,8 +41,9 @@ export const Register: React.FC<RegisterProps> = ({ userStore }) => {
             setRegisterErrors(errors as string[]);
             return;
         }
-        
+
         userStore.registerUser(registerData);
+        
         navigate('/');
     }
 
@@ -44,17 +53,45 @@ export const Register: React.FC<RegisterProps> = ({ userStore }) => {
             <h2 className="register-title">Register</h2>
             <form noValidate className="register-form" onSubmit={onSubmit}>
                 <label htmlFor="name" className="register-label">
-                    Company name:
+                    Name:
                 </label>
                 <input type="text" id="name" name="name" className="register-input" value={registerData.name} onChange={onChange} />
 
+                <label className="register-label">Account type:</label>
+                <div className="radio-container">
+                    <label className="radio-label">
+                        <input
+                            type="radio"
+                            name="type"
+                            value="personal"
+                            checked={!registerData.isCompany}
+                            onChange={onChange}
+                        />
+                        <span className="radio-custom"></span>
+                        Personal Account
+                    </label>
+
+                    <label className="radio-label">
+                        <input
+                            type="radio"
+                            name="type"
+                            value="company"
+                            checked={registerData.isCompany}
+                            onChange={onChange}
+                        />
+                        <span className="radio-custom"></span>
+                        Company Account
+                    </label>
+                </div>
+
+
                 <label htmlFor="email" className="register-label">
-                    Company email:
+                    Email:
                 </label>
                 <input type="email" id="email" name="email" className="register-input" value={registerData.email} onChange={onChange} />
 
                 <label htmlFor="logo" className="register-label">
-                    Company logo:
+                    {registerData.isCompany ? 'Company logo:' : "Profile picture"}
                 </label>
                 <input type="text" id="logo" name="logo" className="register-input" value={registerData.logo} onChange={onChange} />
 

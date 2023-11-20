@@ -12,6 +12,19 @@ input[type=submit] {
 	-webkit-appearance: none;
 }
 
+input[type="text"], 
+input[type="email"]{
+    background-color: $input-cyan;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    background-color: #fff;
+}
+
+.icon{
+	display: none;
+}
 
 
 html {
@@ -29,23 +42,38 @@ html {
 	font-size: $fs-body;
 }
 
-button:hover{
+button:hover {
 	cursor: pointer;
 }
+
+input[type="radio"] {
+	appearance: none;
+	background-color: $dark-cyan;
+	margin: 0;
+	font: inherit;
+	color: currentColor;
+	width: 1.15em;
+	height: 1.15em;
+	border: 0.15em solid currentColor;
+	border-radius: 50%;
+	transform: translateY(-0.075em);
+}
+
 
 
 html {
 	scroll-behavior: smooth;
 }
 
-main{
+main {
 	display: flex;
 	align-items: center;
-    flex-direction: column;
+	flex-direction: column;
 	position: relative;
 }
 
-body, #root {
+body,
+#root {
 	background: $light-gray-cyan;
 	min-height: 100vh;
 }

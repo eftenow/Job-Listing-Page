@@ -18,6 +18,61 @@
     padding: 3%;
 }
 
+
+
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    background-color: $input-cyan;
+    padding: 0.6rem 1rem 0.5rem 1rem;
+    border-radius: 0.4rem;
+    margin-bottom: 0.5rem;
+    border: 2px solid $gray;
+}
+
+.radio-label {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: $fs-small; 
+    cursor: pointer;
+    color: $dark-gray-cyan;
+    font-weight: $fw-regular;
+
+    &:first-child {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.radio-label input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.radio-custom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 12px; 
+    width: 12px; 
+    border: 2px solid $dark-gray-cyan;
+    border-radius: 50%;
+}
+
+.radio-label input:checked ~ .radio-custom {
+    background-color: $dark-cyan;
+    border: 2px solid $dark-cyan;
+}
+
+.radio-label:hover .radio-custom {
+    background-color: $white;
+}
+
+.radio-custom {
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
 .login-form,
 .register-form {
     background-color: #fff;

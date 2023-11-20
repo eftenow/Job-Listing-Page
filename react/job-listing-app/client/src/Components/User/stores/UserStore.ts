@@ -1,6 +1,6 @@
 import { observable, action, makeObservable } from 'mobx';
-import usersData from "../../../data/usersData.json"; 
-import { User, authStore } from './AuthStore';
+import usersData from "../../../data/usersData.json";
+import { UserLocalStorage, authStore } from './AuthStore';
 
 
 export interface UserItem {
@@ -9,7 +9,10 @@ export interface UserItem {
     email: string,
     logo: string,
     password: string,
-    rePassword?: string;
+    isCompany: boolean,
+    rePassword?: string,
+    listings?: number[], // contains the ids of the job listings that the cuurent user(company) created
+    applications?: number[]; //contains the ids of the listings which the user applied for
 }
 
 export interface RegisterProps {
@@ -17,7 +20,7 @@ export interface RegisterProps {
 }
 
 export interface LoginProps {
-    onLogin: (user: User) => void
+    onLogin: (user: UserLocalStorage) => void
 }
 
 

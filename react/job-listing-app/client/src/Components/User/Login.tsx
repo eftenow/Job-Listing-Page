@@ -2,13 +2,14 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { LoginProps } from "./stores/UserStore";
 import { loginValidations } from "./validations/loginValidations";
-import { User } from "./stores/AuthStore";
+import { UserLocalStorage, UserLoginData } from "./stores/AuthStore";
 
-export const Login:React.FC<LoginProps> = ({ onLogin }) => {
-    const [loginData, setLoginData] = useState<Partial<User>>({
+export const Login: React.FC<LoginProps> = ({ onLogin }) => {
+    const [loginData, setLoginData] = useState<UserLoginData>({
+        id: null,
         name: "",
-        password: "" 
-      });
+        password: ""
+    });
     const [loginErrors, setLoginErrors] = useState<string[]>([]);
     const navigate = useNavigate();
 
@@ -25,14 +26,15 @@ export const Login:React.FC<LoginProps> = ({ onLogin }) => {
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const {errors, user} = loginValidations(loginData);
+        const { errors, user } = loginValidations(loginData);
 
         if (errors.length > 0) {
             setLoginErrors(errors as string[]);
             return;
         }
-
-        onLogin(user as User);
+        const { password, ...localStorageData } = user;
+        
+        onLogin(localStorageData as UserLocalStorage);
         navigate('/');
     }
     return (

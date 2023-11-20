@@ -1,19 +1,28 @@
 import { makeObservable, observable, action } from 'mobx';
 
-export interface User {
+export interface UserLoginData {
     id: number | null;
     name: string | '';
-    password?: string | '';
+    password: string | '';
+}
+
+export interface UserLocalStorage {
+    id: number | null;
+    name: string | '';
     logo: string | '';
+    listings?: number[],
+    applications?: number[]; 
 }
 
 
 export class AuthStore {
     isAuthenticated = false;
-    user: User = {
+    user: UserLocalStorage = {
         id: null,
         name: '',
-        logo: ''
+        logo: '',
+        listings: [],
+        applications: []
     };
 
     constructor() {
@@ -32,7 +41,7 @@ export class AuthStore {
         }
     }
 
-    login = (user: User) => {
+    login = (user: UserLocalStorage) => {
         this.isAuthenticated = true;
         this.user = user;
         this.updateLocalStorage();

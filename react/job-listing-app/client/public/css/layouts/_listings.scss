@@ -9,12 +9,16 @@
     box-shadow: 1px 1px 7px 0px $dark-cyan;
 
     @include for-mobile-tablet {
-        width: 95%;
+        width: 90%;
         padding: 0.4rem;
     }
 
     @include for-mobile {
         width: 85%;
+    }
+
+    @include for-mobile-mini{
+        width: 90%;
     }
 
     ul {
@@ -46,7 +50,7 @@
     margin-top: 5%;
 
     @include for-mobile-tablet {
-        width: 95%;
+        width: 90%;
     }
 
     @include for-mobile {
@@ -58,6 +62,10 @@
         margin-top: 12.5%;
     }
 
+    @include for-mobile-mini{
+        width: 90%;
+    }
+
 
     ul {
         display: flex;
@@ -65,6 +73,7 @@
     }
 
     .listing-card {
+        position: relative;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -80,6 +89,10 @@
             padding: 0.25rem;
         }
 
+        @include for-mobile-tablet {
+            min-height: 110px;
+        }
+
         @include for-mobile {
             flex-direction: column;
             align-items: flex-start;
@@ -87,7 +100,8 @@
         }
 
         @include for-mobile-mini {
-            padding: 0
+            padding: 0;
+            margin-bottom: 1.5rem;
         }
     }
 
@@ -95,13 +109,13 @@
         border-left: $dark-cyan 6px solid;
 
         @include for-tablet {
-            border-left: $dark-cyan 2px solid;
+            border-left: $dark-cyan 3px solid;
         }
     }
 
     .img-container {
-        max-width: 80px;
-        max-height: 80px;
+        max-width: 90px;
+        max-height: 90px;
 
         @include for-mobile-tablet {
             max-width: 58px;
@@ -132,7 +146,7 @@
             align-items: flex-start;
         }
 
-        @include for-mobile-mini{
+        @include for-mobile-mini {
             padding: 0.2rem;
         }
 
@@ -205,6 +219,10 @@
         margin: 0 0.3rem;
     }
 
+    * {
+        margin-bottom: 0.3rem;
+    }
+
     .first-row {
         font-size: $fs-very-small;
         color: $dark-cyan;
@@ -224,4 +242,42 @@
         font-size: 12px;
         color: $dark-gray-cyan;
     }
+
+    .fourth-row button {
+        font-size: $fs-very-small;
+        background: hsl(180, 38%, 91%);
+        color: $dark-cyan;
+        border-color: $dark-cyan;
+        border: 2px solid;
+        padding: 0.2rem 1rem;
+        border-radius: 1rem;
+        transition: all 0.6s ease, color 0.6s ease;
+        width: fit-content;
+        font-weight: $fw-bold;
+
+        @include for-mobile {
+            position: absolute;
+            top: -6%;
+            right: -2%;
+            padding: 0.5rem 0.5rem 0.25rem 0.4rem;
+            border-radius: 50%;
+
+            .icon {
+                display: block;
+            }
+
+            .btn-text {
+                display: none;
+            }
+        }
+
+
+    }
+
+    .fourth-row button:hover {
+        background: $dark-cyan;
+        border-color: $dark-cyan;
+        color: $white;
+    }
+
 }

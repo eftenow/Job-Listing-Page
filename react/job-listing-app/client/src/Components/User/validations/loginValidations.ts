@@ -1,10 +1,15 @@
 import usersData from '../../../data/usersData.json';
-import { User } from "../stores/AuthStore";
+import { UserLoginData } from "../stores/AuthStore";
 
-export const loginValidations = (loginData: Partial<User>) => {
+export const loginValidations = (loginData: UserLoginData) => {
     const errors = new Set();
     const hasEmptyField = Object.values(loginData).some(value => value === "");
     const user = usersData.find((userData) => userData.name === loginData.name);
+    // const userLogin = {
+    //     id: user?.id,
+    //     name: user?.name,
+    //     password: user?.password,
+    // }
 
 
     if (hasEmptyField) {
