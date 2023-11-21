@@ -1,0 +1,90 @@
+.container-option-select{
+    position: relative;
+    max-width: 305px;
+    width: 100%;
+}
+
+.select-btn-option{
+    display: flex;
+    height: 43px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    border: #ccc 2px solid;
+}
+
+.select-btn-option:hover{
+    border: #8e47f8 2px solid;
+    outline: none;
+}
+.select-btn-option .btn-text-option{
+    font-size: 13px;
+    font-weight: 400;
+    color: rgb(88 83 83);
+}
+.select-btn-option .arrow-dwn-option {
+    display: flex;
+    height: 19px;
+    width: 19px;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 50%;
+    background: #8e47f8bd;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+}
+
+.select-btn-option.active .arrow-dwn-option {
+    transform: rotate(-180deg);
+}
+
+.list-items-option{
+    position: relative;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    max-height: 0;
+    overflow: auto;
+    transition: max-height 0.3s ease-in-out; 
+}
+
+.select-btn-option.open ~ .list-items-option{
+    max-height: 262px; 
+    margin-top: 4px;
+    padding: 4px 12px;
+}
+.list-items-option .item-option{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 12px;
+    margin: 2px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #959595;
+}
+.list-items-option .item-option:hover{
+    background-color: #e6dff3ea;
+    color: #616161;
+    font-weight: bolder;
+}
+
+.checked{
+    background-color: pink;
+}
+
+.list-items-option.active {
+    max-height: 200px; 
+}
+
+.list-items-option.active {
+    max-height: 200px; 
+}

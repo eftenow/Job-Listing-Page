@@ -15,6 +15,7 @@ input[type=submit] {
 input[type="text"], 
 input[type="email"]{
     background-color: $input-cyan;
+	color: $dark-cyan;
 }
 
 input[type="text"]:focus,

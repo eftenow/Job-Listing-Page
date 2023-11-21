@@ -9,6 +9,7 @@ import { Login } from './Components/User/Login'
 import { listingStore } from './Components/Listing/ListingStore'
 import { userStore } from './Components/User/stores/UserStore'
 import { authStore } from './Components/User/stores/AuthStore'
+import { CreateListing } from './Components/Listing/CreateListing'
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
 
       <main>
         <Routes>
-        <Route path='/' element={<Listings listingStore={listingStore} userData={authStore.isAuthenticated ? authStore.user : null} />} />
+        <Route path='/' element={<Listings listingStore={listingStore} authStore={authStore} />} />
+        <Route path='/create' element={<CreateListing />} />
         <Route path='/login' element={<Login onLogin={authStore.login} />} />
         <Route path='/register' element={<Register userStore={userStore} />} />
         </Routes>

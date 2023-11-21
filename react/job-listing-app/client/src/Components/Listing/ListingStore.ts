@@ -1,6 +1,6 @@
 import { observable, action, makeObservable } from 'mobx';
 import data from '../../data/data.json';
-import { UserLocalStorage } from '../User/stores/AuthStore';
+import { AuthStore } from '../User/stores/AuthStore';
 
 
 export interface ListingItemIf {
@@ -22,7 +22,7 @@ export interface ListingItemIf {
 export interface ListingItemProps {
     listing: ListingItemIf;
     selectCategory: (value: string) => void;
-    user: UserLocalStorage | null;
+    authStore: AuthStore;
 }
 
 

@@ -3,18 +3,17 @@ import { observer } from "mobx-react";
 
 import { ListingItem } from "./ListingItem";
 
-import { UserLocalStorage } from "../User/stores/AuthStore";
+import { AuthStore } from "../User/stores/AuthStore";
 import { ListingItemIf, ListingStore } from "./ListingStore";
 
 interface ListingsProps {
     listingStore: ListingStore,
-    userData: UserLocalStorage | null
+    authStore: AuthStore
 }
 
-export const Listings: React.FC<ListingsProps> = observer(({ listingStore, userData }) => {
+export const Listings: React.FC<ListingsProps> = observer(({ listingStore, authStore }) => {
     const [categoriesSelected, setSelectedCategories] = useState<string[]>([]);
     const [listings, setListings] = useState<ListingItemIf[]>([]);
-
 
     useEffect(() => {
         const fetchedListings = listingStore.listings;
@@ -65,9 +64,10 @@ export const Listings: React.FC<ListingsProps> = observer(({ listingStore, userD
             <section className='listing-section'>
                 <ul>
                     {listings.map(listing =>
-                        <ListingItem key={listing.id}
+                        <ListingItem
+                            key={listing.id}
                             listing={listing}
-                            user={userData}
+                            authStore={authStore}
                             selectCategory={selectCategory} />)}
                 </ul>
             </section></>

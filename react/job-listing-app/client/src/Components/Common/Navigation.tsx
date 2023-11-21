@@ -12,6 +12,7 @@ export const Navigation: React.FC<NavigationProps> = observer(({ authStore }) =>
 
     return (
         <nav className='site-nav'>
+            {authStore.user.isCompany && <Link to="/create" className='button nav-btn'>Add Listing</Link>}
             <Link to="/" className='button nav-btn'>Listings</Link>
             {isAuthenticated ?
                 <>
