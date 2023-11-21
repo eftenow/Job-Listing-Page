@@ -1,90 +1,91 @@
-.container-option-select{
-    position: relative;
-    max-width: 305px;
-    width: 100%;
+.container-option-select {
+  position: relative;
+  width: 100%;
 }
 
-.select-btn-option{
-    display: flex;
-    height: 43px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    border-radius: 4px;
+.select-btn-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: $white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: $gray 2px solid;
+
+  &:hover {
     cursor: pointer;
-    background-color: #fff;
-    border: #ccc 2px solid;
-}
-
-.select-btn-option:hover{
-    border: #8e47f8 2px solid;
+    border: $dark-cyan 2px solid;
     outline: none;
-}
-.select-btn-option .btn-text-option{
-    font-size: 13px;
-    font-weight: 400;
-    color: rgb(88 83 83);
-}
-.select-btn-option .arrow-dwn-option {
+  }
+
+  .btn-text-option {
+    font-size: $fs-very-small;
+    font-weight: $fw-bold;
+    color: $dark-gray-cyan;
+
+    .select-text {
+      font-weight: $fw-regular !important;
+    }
+  }
+
+  .arrow-dwn-option {
     display: flex;
-    height: 19px;
-    width: 19px;
-    color: #fff;
-    font-size: 13px;
+    color: $white;
+    background: $dark-cyan;
+    height: $fs-copy;
+    width: $fs-copy;
+    font-size: $fs-very-small;
     border-radius: 50%;
-    background: #8e47f8bd;
     align-items: center;
     justify-content: center;
-    transition: 0.4s;
-}
+    @include transition(transform);
+  }
 
-.select-btn-option.active .arrow-dwn-option {
+  &.active .arrow-dwn-option {
     transform: rotate(-180deg);
+  }
+
+  & .fa-chevron-down:before{
+    font-size: $fs-tiny;
+  }
 }
 
-.list-items-option{
-    position: relative;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    display: block;
-    max-height: 0;
-    overflow: auto;
-    transition: max-height 0.3s ease-in-out; 
-}
+.list-items-option {
+  position: relative;
+  border-radius: 0.5rem;
+  background-color: $white;
+  box-shadow: 0 0 5px $dark-cyan;
+  display: block;
+  max-height: 0;
+  @include transition(max-height);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $very-dark-gray-cyan $dark-gray-cyan;
 
-.select-btn-option.open ~ .list-items-option{
-    max-height: 262px; 
-    margin-top: 4px;
-    padding: 4px 12px;
-}
-.list-items-option .item-option{
+  &.active {
+    max-height: 200px;
+  }
+
+  .item-option {
     display: flex;
     align-items: center;
-    list-style: none;
-    height: 40px;
-    cursor: pointer;
-    transition: 0.3s;
-    padding: 0 12px;
+    padding: 0.5rem 0.75rem;
     margin: 2px 0;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     font-size: 14px;
-    color: #959595;
-}
-.list-items-option .item-option:hover{
-    background-color: #e6dff3ea;
-    color: #616161;
-    font-weight: bolder;
-}
+    color: $dark-gray-cyan;
+    @include transition(background-color, font-weight, cursor);
 
-.checked{
-    background-color: pink;
-}
+    &:hover {
+      background-color: $mid-gray-cyan;
+      font-weight: bolder;
+      cursor: pointer;
+    }
 
-.list-items-option.active {
-    max-height: 200px; 
-}
-
-.list-items-option.active {
-    max-height: 200px; 
+    &.checked {
+      background-color: $dark-cyan;
+      color: $white !important;
+      font-weight: $fw-bold;
+    }
+  }
 }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SelectionListStates, SelectedItems, CreateListingProps, ListingItemIf } from './listingInterfaces';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const languages = ["HTML", "CSS", "JavaScript", "Python", "Ruby"];
 const tools = ["React", "Sass", "Ruby", "RoR", "Vue", "Django"];
@@ -8,7 +8,7 @@ const roles = ["Frontend", "Backend", "Fullstack"];
 const levels = ["Intern", "Junior", "Midweight", "Senior"];
 const contracts = ["Full Time", "Part Time", "Contract"];
 
-export const CreateListing: React.FC<CreateListingProps> = ({ listingStore }) => {
+export const EditListing: React.FC<CreateListingProps> = ({ listingStore }) => {
     const [listStates, setListStates] = useState<SelectionListStates>({
         isLanguageListOpen: false,
         isToolListOpen: false,
@@ -25,9 +25,24 @@ export const CreateListing: React.FC<CreateListingProps> = ({ listingStore }) =>
         selectedContract: null,
     });
     const navigate = useNavigate();
+    const params = useParams();
+    const { listingId } = params;
+    const currentListing: ListingItemIf = listingStore.getListing(Number(listingId));
+
+    useEffect(() => {
+        setSelectedItems(
+            {
+                selectedLanguages: currentListing.languages,
+                selectedTools: currentListing.tools,
+                selectedRole: currentListing.role,
+                selectedLevel: currentListing.level,
+                selectedContract: currentListing.contract
+            }
+        )
+    }, [currentListing])
 
 
-    const onSubmitCreate = (e: React.FormEvent) => {
+    const onSubmitEdit = (e: React.FormEvent) => {
         e.preventDefault();
         const form = e.currentTarget;
         const position = (form.querySelector('#position') as HTMLInputElement)?.value;
@@ -35,11 +50,13 @@ export const CreateListing: React.FC<CreateListingProps> = ({ listingStore }) =>
         const level = form.querySelector('#level')?.textContent;
         const role = form.querySelector('#role')?.textContent;
         const contract = form.querySelector('#contract')?.textContent;
-        const languages = form.querySelector('#languages')?.textContent?.split(', ');
-        const tools = form.querySelector('#tools')?.textContent?.split(', ');
+        const languages = form.querySelector('#languages')?.textContent?.split(', ') || [];
+        const tools = form.querySelector('#tools')?.textContent?.split(', ') || [];
 
         const listingData = { position, location, level, role, contract, languages, tools };
-        listingStore.addListing(listingData as Partial<ListingItemIf>);
+        console.log(listingData);
+
+        listingStore.editListing(Number(listingId), listingData as Partial<ListingItemIf>);
         navigate('/');
     }
 
@@ -75,24 +92,22 @@ export const CreateListing: React.FC<CreateListingProps> = ({ listingStore }) =>
           };
         });
       };
-
-
-
+      
 
     return (
         <section className='create-section'>
-            <h2 className='create-title'>Create Job Listing</h2>
-            <form className='create-form' onSubmit={(e) => onSubmitCreate(e)}>
+            <h2 className='create-title'>Edit Job Listing</h2>
+            <form className='create-form' onSubmit={(e) => onSubmitEdit(e)}>
 
                 <div className="create-form-group">
                     <label className='create-label' htmlFor="position">Position:</label>
-                    <input type="text" name="position" id="position" className="create-input" />
+                    <input type="text" name="position" id="position" className="create-input" defaultValue={currentListing.position} />
                     <p className='incorrect-title-msg incorrect-create'></p>
                 </div>
 
                 <div className="create-form-group">
                     <label className='create-label' htmlFor="location">Location:</label>
-                    <input type="text" name="location" id="location" className="create-input" />
+                    <input type="text" name="location" id="location" className="create-input" defaultValue={currentListing.location} />
                     <p className='incorrect-title-msg incorrect-create'></p>
                 </div>
 
@@ -136,7 +151,7 @@ export const CreateListing: React.FC<CreateListingProps> = ({ listingStore }) =>
                             className={`select-btn-option ${listStates.isToolListOpen && "active"}`}
                             onClick={() => toggleList('isToolListOpen')}
                         >
-                            <span className="btn-text-option" >
+                            <span className="btn-text-option">
                                 {selectedItems.selectedTools.length > 0
                                     ? <span id='tools'>{selectedItems.selectedTools.join(', ')}</span>
                                     : <span className='select-text'>Select tools</span>}
@@ -248,7 +263,7 @@ export const CreateListing: React.FC<CreateListingProps> = ({ listingStore }) =>
                 </div>
 
 
-                <button type="submit" className="create-button">Create</button>
+                <button type="submit" className="create-button">Edit</button>
             </form>
         </section>
     );

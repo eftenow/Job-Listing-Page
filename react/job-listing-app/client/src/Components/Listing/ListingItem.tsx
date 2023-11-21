@@ -1,9 +1,10 @@
-import { ListingItemProps } from "./ListingStore";
 import { observer } from "mobx-react";
 import { runInAction } from 'mobx';
+import { ListingItemProps } from "./listingInterfaces";
+import { Link } from "react-router-dom";
 
 
-export const ListingItem: React.FC<ListingItemProps> = observer(({ listing, selectCategory, authStore }) => {
+export const ListingItem: React.FC<ListingItemProps> = observer(({ listing, selectCategory, authStore, deleteItem }) => {
     const user = authStore.user;
     const alreadyApplied = user?.applications ? user.applications.includes(listing.id) : false;
     const isOwner = user?.listings ? user.listings.includes(listing.id) : false;
@@ -24,6 +25,7 @@ export const ListingItem: React.FC<ListingItemProps> = observer(({ listing, sele
         });
     };
 
+
     return (
         <li className='listing-card'>
             <div className='left-card-side'>
@@ -38,19 +40,19 @@ export const ListingItem: React.FC<ListingItemProps> = observer(({ listing, sele
                             {user?.isCompany
                                 ? isOwner &&
                                 <>
-                                    <button>
+                                    <Link className="edit-btn" to={`/edit/${listing.id}`}>
                                         <span className="btn-text">Edit</span>
                                         <span>
                                             <i className="fa-solid fa-pen-to-square icon"></i>
                                         </span>
-                                    </button>
+                                    </Link>
 
-                                    <button>
+                                    <a href="#" onClick={() => deleteItem(listing.id)}>
                                         <span className="btn-text">Delete</span>
-                                        <span>
+                                        <span className="del-btn-icon">
                                             <i className="fa-solid fa-trash icon"></i>
                                         </span>
-                                    </button>
+                                    </a>
 
                                 </>
 

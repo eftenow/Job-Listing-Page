@@ -33,6 +33,8 @@ export class AuthStore {
             user: observable,
             login: action,
             logout: action,
+            delListing: action,
+            addListing: action
         });
 
         const storedData = localStorage.getItem("auth");
@@ -60,6 +62,15 @@ export class AuthStore {
             applications: []
         };
         this.updateLocalStorage();
+    }
+
+    addListing = (listingId:number) => {
+        this.user.listings?.push(listingId);
+        this.updateLocalStorage();
+    }
+
+    delListing = (listingId:number) => {
+        this.user.listings?.filter(x => x == listingId);
     }
 
     updateLocalStorage() {

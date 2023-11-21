@@ -2,14 +2,9 @@ import React, { useEffect, useState } from "react"
 import { observer } from "mobx-react";
 
 import { ListingItem } from "./ListingItem";
+import { ListingItemIf, ListingsProps } from "./listingInterfaces";
 
-import { AuthStore } from "../User/stores/AuthStore";
-import { ListingItemIf, ListingStore } from "./ListingStore";
 
-interface ListingsProps {
-    listingStore: ListingStore,
-    authStore: AuthStore
-}
 
 export const Listings: React.FC<ListingsProps> = observer(({ listingStore, authStore }) => {
     const [categoriesSelected, setSelectedCategories] = useState<string[]>([]);
@@ -42,10 +37,13 @@ export const Listings: React.FC<ListingsProps> = observer(({ listingStore, authS
         }
     };
 
-
     const clearCategories = () => {
         setSelectedCategories([]);
     }
+
+    // const onClickDelete = (id: number) => {
+    //     listingStore.
+    // }
 
 
     return (
@@ -61,6 +59,10 @@ export const Listings: React.FC<ListingsProps> = observer(({ listingStore, authS
                 </section>
             }
 
+            {
+
+            }
+
             <section className='listing-section'>
                 <ul>
                     {listings.map(listing =>
@@ -68,7 +70,8 @@ export const Listings: React.FC<ListingsProps> = observer(({ listingStore, authS
                             key={listing.id}
                             listing={listing}
                             authStore={authStore}
-                            selectCategory={selectCategory} />)}
+                            selectCategory={selectCategory}
+                            deleteItem={listingStore.deleteListing} />)}
                 </ul>
             </section></>
     )

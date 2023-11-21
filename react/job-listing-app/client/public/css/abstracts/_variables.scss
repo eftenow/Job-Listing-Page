@@ -16,14 +16,15 @@ $dark-cyan: hsl(180, 29%, 50%); //primary clr
 $light-gray-cyan: hsl(180, 52%, 96%); //background clr
 $light-gray-cyan-filter: hsl(180, 31%, 95%); // Filter Tablets
 
-$mid-gray-cyan: hsl(180, 38%, 91%);
+$mid-gray-cyan: hsl(180, 38%, 80%);
 
 $dark-gray-cyan: hsl(180, 8%, 52%); // dark cyan
-$very-dark-gray-cyan: hsl(180, 14%, 20%); // very dark cyan
+$very-dark-gray-cyan: hsl(180, 14%, 23%); // very dark cyan
 
-$error-red: rgb(221, 45, 45);
+$error-red: rgb(216, 19, 59);
 $white: #fff;
-$gray: #ddd;
+$gray: #d1d1d1;
+$dark-gray: #616161;
 $input-cyan: hsl(180, 52%, 98%);
 
 //Font weight
@@ -32,6 +33,7 @@ $fw-bold: 700;
 
 
 //Font size
+$fs-tiny: 11px;
 $fs-very-small: 13px;
 $fs-small: 14px;
 $fs-body: 15px;

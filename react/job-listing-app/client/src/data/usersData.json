@@ -40,7 +40,7 @@
         "logo": "./images/photosnap.svg",
         "password": "12345",
         "isCompany": true,
-        "listings": [1],
+        "listings": [1, 2],
         "applications": []
     },
 
@@ -67,12 +67,23 @@
     },
     {
         "id": 7,
-        "name": "ivan",
-        "email": "ivan@icloud.com",
-        "logo": "./images/faceit.svg",
+        "name": "Tsvetan",
+        "email": "tsvetan.eftenov@icloud.com",
+        "logo": "https://media.licdn.com/dms/image/D5603AQFRj5TCxAuP1A/profile-displayphoto-shrink_400_400/0/1688492884063?e=1706140800&v=beta&t=drHDFsKF2CsSrw3qs96P8xYKY2UNnVwn5DcpFEXOqJ4",
         "password": "12345",
         "isCompany": false,
         "listings": [],
-        "applications": [1, 2]
+        "applications": []
+    },
+    {
+        "id": 8,
+        "name": "ZestLabs",
+        "email": "zestLabs@icloud.com",
+        "logo": "https://media.licdn.com/dms/image/C4E0BAQG4OAtQBuFFag/company-logo_200_200/0/1649270793147/zestlabs_io_logo?e=2147483647&v=beta&t=bOxSUClzpw_6M2VDavMIgkwCTjG3QVV2hKO7GfuPG6A",
+        "password": "12345",
+        "isCompany": true,
+        "listings": [],
+        "applications": []
     }
+    
 ]

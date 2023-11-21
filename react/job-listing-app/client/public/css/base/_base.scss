@@ -12,21 +12,55 @@ input[type=submit] {
 	-webkit-appearance: none;
 }
 
-input[type="text"], 
-input[type="email"]{
-    background-color: $input-cyan;
-	color: $dark-cyan;
+input[type="text"],
+input[type="email"] {
+	background-color: $input-cyan;
+	color: $dark-gray-cyan;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus {
-    background-color: #fff;
+	background-color: #fff;
 }
 
-.icon{
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+	width: 7px;
+}
+
+body::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track {
+	background-color: $dark-gray-cyan;
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+	background-color: hsl(180, 29%, 50%);
+	border-radius: 4px;
+}
+
+
+.list-items-option::-webkit-scrollbar {
+    width: 5px;
+}
+
+.list-items-option::-webkit-scrollbar-track {
+    background-color: $dark-gray-cyan;
+}
+
+.list-items-option::-webkit-scrollbar-thumb {
+    background-color: hsl(180, 29%, 50%);
+    border-radius: 4px;
+}
+
+
+.icon {
 	display: none;
 }
 
+.fa-edit:before, .fa-pen-to-square:before, .fa-trash:before {
+    font-size: 13px;
+}
 
 html {
 	-webkit-box-sizing: border-box;

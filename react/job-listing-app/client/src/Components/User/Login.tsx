@@ -42,7 +42,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             <h2 className="login-title">Login</h2>
             <form className="login-form" onSubmit={onSubmit} >
                 <label htmlFor="name" className="login-label">
-                    Company name:
+                    Username:
                 </label>
                 <input type="text" id="name" name="name" className="login-input" onChange={onChange} value={loginData.name} />
 
