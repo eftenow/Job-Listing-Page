@@ -21,7 +21,7 @@ export const Navigation: React.FC<NavigationProps> = observer(({ authStore }) =>
                         <img className="logo-img"
                             src={user?.logo || '/path/to/default-logo.png'}
                             alt="User Logo"
-                            onError={(e) => e.target.src = '../../../images/default-logo.png'} />
+                            onError={(e) => (e.target as HTMLImageElement).src = '../../../images/default-logo.png'} />
                     </div>
                 </>
                 :

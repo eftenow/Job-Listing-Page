@@ -11,8 +11,8 @@ export interface UserLocalStorage {
     name: string | '';
     logo: string | '';
     isCompany: boolean;
-    listings?: number[];
-    applications?: number[];
+    listings: number[];
+    applications: number[];
 }
 
 
@@ -42,6 +42,14 @@ export class AuthStore {
             const authData = JSON.parse(storedData);
             this.isAuthenticated = authData.isAuthenticated;
             this.user = authData.user;
+
+            if (!this.user.applications && !this.user.isCompany) {
+                this.user.applications = [];
+            }
+
+            if (!this.user.listings) {
+                this.user.listings = [];
+            }
         }
     }
 

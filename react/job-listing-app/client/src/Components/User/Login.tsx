@@ -32,7 +32,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             setLoginErrors(errors as string[]);
             return;
         }
-        const { password, ...localStorageData } = user;
+        const { ...localStorageData } = user;
         
         onLogin(localStorageData as UserLocalStorage);
         navigate('/');

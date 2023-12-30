@@ -47,7 +47,8 @@ export class UserStore {
         authStore.login({
             id: id,
             name: newUser.name,
-            logo: newUser.logo
+            logo: newUser.logo,
+            isCompany: newUser.isCompany 
         });
     }
 }
