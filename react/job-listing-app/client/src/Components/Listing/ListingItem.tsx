@@ -8,8 +8,6 @@ export const ListingItem: React.FC<ListingItemProps> = observer(({ listing, sele
     const user = authStore.user;
     const alreadyApplied = user?.applications ? user.applications.includes(listing.id) : false;
     const isOwner = user?.listings ? user.listings.includes(listing.id) : false;
-    console.log(JSON.parse(JSON.stringify(user)));
-    
 
     const onClickSelectFilter = (e: React.MouseEvent<HTMLDivElement>) => {
         const elementType = (e.target as HTMLParagraphElement).tagName.toLowerCase();
@@ -23,11 +21,8 @@ export const ListingItem: React.FC<ListingItemProps> = observer(({ listing, sele
 
     const onClickApply = (id: number) => {
         runInAction(() => {
-            console.log(id);
-            
             authStore.user.applications?.push(id);
-            console.log(JSON.parse(JSON.stringify(authStore.user)));
-            
+            authStore.updateLocalStorage();
         });
     };
 

@@ -48,7 +48,9 @@ export class UserStore {
             id: id,
             name: newUser.name,
             logo: newUser.logo,
-            isCompany: newUser.isCompany 
+            isCompany: newUser.isCompany,
+            listings: [],
+            applications: [],
         });
     }
 }
